@@ -1,13 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet } from 'react-native';
+import Interno from './screens/Interno';
+import Cadastro from './screens/Cadastro';
+
+import HomeScreen from './screens/Home';
+import LoginScreen from './screens/Login.js';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <Button title ="Ir para Login" onPress={() => Alert.alert("Estou Funcionando")}/>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Interno" component={Interno} />
+        <Stack.Screen name="Cadastro" component={Cadastro} />
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
